@@ -39,7 +39,7 @@ file_thresholds = pd.read_excel('Table Formatted RANGES.xlsx')
 ###############################################################
 
 try:
-    st.subheader('Tabel visualization of number of classes')
+    st.subheader('Time series visualization')
 
     all_columns = file.columns.to_list()
 

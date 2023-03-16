@@ -43,7 +43,7 @@ try:
     ###############################################################
     ####################   MAP visualization ######################
     ###############################################################
-    st.subheader('Tabel visualization of number of classes')
+    st.subheader('Table visualization of number of classes')
 
     all_columns = file.columns.to_list()
 
