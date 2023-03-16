@@ -17,4 +17,4 @@ matplotlib.rc('font', **font)
 
 st.set_page_config(page_title="time series", page_icon="📈")
 
-st.header('Dashboard for Jupiter Intelligence data analysis')
+st.header('Dashboard for Jupiter Intelligence data analysis - v 0.0')
