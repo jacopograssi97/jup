@@ -15,7 +15,7 @@ font = {'family' : 'Arial',
 matplotlib.rc('font', **font)
 
 
-st.set_page_config(page_title="time series", page_icon="📈")
+st.set_page_config(page_title="Time series", page_icon="📈")
 
 ###############################################################
 #######################   DATA LOADER #########################
