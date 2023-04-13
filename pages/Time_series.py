@@ -100,9 +100,19 @@ try:
             by_scenario = file.groupby('scenario').get_group(scen)
             by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
             by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0] ).dropna()
-            ax.plot(by_scenario_mod.year, by_scenario_mod[var], c=color, label = scen_nm)
 
-
+            if 'upper' in var:
+                ax.plot(by_scenario_mod.year, by_scenario_mod[var], '--', c=color)
+            
+            elif 'lower' in var:
+                ax.plot(by_scenario_mod.year, by_scenario_mod[var], linestyle='dotted', c=color, lw=4)
+            
+            else:
+                ax.plot(by_scenario_mod.year, by_scenario_mod[var], c=color, label = scen_nm, lw=2)
+    
+    ax.plot([], [], ':', c='k', label="Lower")
+    ax.plot([], [], '-', c='k', label="Mean")
+    ax.plot([], [], '--', c='k', label="Upper")
 
 
     forbidden_numb = np.arange(0,1000,1)
@@ -122,6 +132,11 @@ try:
     if '**' in var_to_band:
         var_to_band = var_to_band.replace("**", "*")
 
+    if '**' in var_to_band:
+        var_to_band = var_to_band.replace("**", "*")
+    
+    st.write(var_to_band)
+
     print(var_to_band)
 
     bands = file_thresholds.where(file_thresholds.Metric == var_to_band).dropna()
@@ -133,7 +148,7 @@ try:
 
 
     ax.set_xlabel('year')
-    ax.set_ylabel('Index')
+    ax.set_ylabel('value')
     ax.set_title(var_to_plot)
 
     handles, labels = plt.gca().get_legend_handles_labels()
@@ -146,15 +161,15 @@ try:
     tbl = pd.DataFrame()
     for var in variables_to_plot:
 
+        if 'mean' in var:
 
-
-        for scen, color,scen_nm in zip(scenarios,colors,['SSP1-2.6','SSP2-4.5','SSP5-8.5']):
-            by_scenario = file.groupby('scenario').get_group(scen)
-            by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
-            by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0] ).dropna()
-            tbl[f'{scen} {var}'] = by_scenario_mod[var].to_numpy()
-        
-            tbl['year'] = by_scenario_mod.year.to_numpy().astype(int)
+            for scen, color,scen_nm in zip(scenarios,colors,['SSP1-2.6','SSP2-4.5','SSP5-8.5']):
+                by_scenario = file.groupby('scenario').get_group(scen)
+                by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
+                by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0]).dropna()
+                tbl[f'{scen} {var}'] = by_scenario_mod[var].to_numpy()
+            
+                tbl['year'] = by_scenario_mod.year.to_numpy().astype(int)
 
     tbl = tbl.set_index('year')
 
