@@ -15,4 +15,8 @@ font = {'family' : 'Arial',
 matplotlib.rc('font', **font)
 
 
-st.header('Dashboard for Jupiter Intelligence data analysis - v 0.0')
+st.header('Dashboard for Jupiter Intelligence data analysis - v 0.1')
+
+st.subheader('Updates')
+st.text('-Bug fixed \n-Dashed and dotted lines added for lower and upper limits in Time series \n-Tables simplified in Time series')
+
