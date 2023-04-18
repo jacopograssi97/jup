@@ -143,7 +143,7 @@ try:
     ax.set_xlabel('Km')
     ax.set_ylabel(ylabel)
     ax.set_title(title)
-    ax.set_xticks(np.arange(5,100,5))
+    ax.set_xticks(np.arange(5,105,5))
 
 
     handles, labels = plt.gca().get_legend_handles_labels()
