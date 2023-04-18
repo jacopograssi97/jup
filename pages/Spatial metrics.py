@@ -84,7 +84,7 @@ try:
 
     variables_to_plot = []
 
-    time_ext = list(st.slider('Time domain', 2020, 2100, (2021, 2099)))
+    time_ext = list(st.checkbox('Years', np.arange(2020,2105,5)))
 
 
     # Finding all the metrics associated with that variable (low, man, up)
