@@ -147,9 +147,13 @@ try:
         plt.text(time_ext[0] + 5, band['Min Value'], band['Tier'], fontsize=9)
 
 
+    title = st.text_input('Chart title', var_to_plot)
+    ylabel = st.text_input('Y label', 'value')
+
     ax.set_xlabel('year')
-    ax.set_ylabel('value')
-    ax.set_title(var_to_plot)
+    ax.set_ylabel(ylabel)
+    ax.set_title(title)
+
 
     handles, labels = plt.gca().get_legend_handles_labels()
     by_label = dict(zip(labels, handles))
@@ -176,4 +180,5 @@ try:
     st.table(tbl)
 
 except:
+    raise
     st.write('Load the file')
