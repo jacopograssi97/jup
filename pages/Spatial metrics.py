@@ -167,5 +167,4 @@ try:
     tbl = tbl.set_index('year')
 
 except:
-    raise
     st.write('Load the file')
