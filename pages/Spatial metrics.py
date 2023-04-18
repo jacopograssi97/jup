@@ -98,8 +98,7 @@ try:
     for var in variables_to_plot:
 
         by_scenario = file.groupby('scenario').get_group(scen_to_plot)
-        by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
-        by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0] ).dropna()
+        by_scenario_mod = by_scenario.where(by_scenario['year'] == time_ext).dropna()
 
         yrs = np.unique(by_scenario_mod['year'].to_list())
         colors = plt.cm.rainbow(np.linspace(0,1,len(yrs)))
