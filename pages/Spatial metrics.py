@@ -137,7 +137,7 @@ try:
         plt.text(0, band['Min Value'], band['Tier'], fontsize=9)
 
 
-    title = st.text_input('Chart title')
+    title = st.text_input('Chart title', var_to_plot)
     ax.set_xlabel('Km')
     ax.set_ylabel('value')
 
