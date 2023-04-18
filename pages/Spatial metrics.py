@@ -10,7 +10,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 
 font = {'family' : 'Arial',
         'weight' : 'normal',
-        'size'   : 12}
+        'size'   : 13}
 
 matplotlib.rc('font', **font)
 
@@ -134,7 +134,7 @@ try:
     for index, band in bands.iterrows():
 
         ax.axhline(y = band['Min Value'], color = 'k', linestyle = '--', alpha=0.6)
-        plt.text(0, band['Min Value'], band['Tier'], fontsize=9)
+        plt.text(0, band['Min Value'], band['Tier'], fontsize=11)
 
 
     title = st.text_input('Chart title', var_to_plot)
