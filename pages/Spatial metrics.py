@@ -138,13 +138,12 @@ try:
 
 
     title = st.text_input('Chart title', var_to_plot)
-    ax.set_xlabel('Km')
-    ax.set_ylabel('value')
+    ylabel = st.text_input('Y label', 'value')
 
-    try:
-        ax.set_title(title)
-    except:
-        ax.set_title(var_to_plot)
+    ax.set_xlabel('Km')
+    ax.set_ylabel(ylabel)
+    ax.set_title(title)
+
 
     handles, labels = plt.gca().get_legend_handles_labels()
     by_label = dict(zip(labels, handles))
