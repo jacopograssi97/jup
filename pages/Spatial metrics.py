@@ -97,13 +97,11 @@ try:
     # Plotting variable
     for var in variables_to_plot:
 
-        by_scenario = file.groupby('scenario').get_group(scen_to_plot)
-        by_scenario_mod = by_scenario.where(by_scenario['year'] == time_ext).dropna()
+        by_scenario_mod = file.groupby('scenario').get_group(scen_to_plot)
+        colors = plt.cm.rainbow(np.linspace(0,1,len(time_ext)))
 
-        yrs = np.unique(by_scenario_mod['year'].to_list())
-        colors = plt.cm.rainbow(np.linspace(0,1,len(yrs)))
+        for yr,i in zip(time_ext,range(len(time_ext))):
 
-        for yr,i in zip(yrs,range(len(yrs))):
             by_yr = by_scenario_mod.where(by_scenario_mod['year']==yr).dropna()
 
             if band_to_plot in var:
