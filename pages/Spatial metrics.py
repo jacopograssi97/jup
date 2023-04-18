@@ -107,7 +107,7 @@ try:
             by_yr = by_scenario_mod.where(by_scenario_mod['year']==yr).dropna()
 
             if band_to_plot in var:
-                ax.plot(np.linspace(0,100,20), by_yr[var].to_list(), '-', label=int(yr), color=colors[i])
+                ax.plot(np.linspace(5,100,20), by_yr[var].to_list(), '-', label=int(yr), color=colors[i])
             
     forbidden_numb = np.arange(0,1000,1)
     var_to_band = var_to_plot[3:]
@@ -143,6 +143,7 @@ try:
     ax.set_xlabel('Km')
     ax.set_ylabel(ylabel)
     ax.set_title(title)
+    ax.set_xticklabels(np.linspace(5,100,20))
 
 
     handles, labels = plt.gca().get_legend_handles_labels()
