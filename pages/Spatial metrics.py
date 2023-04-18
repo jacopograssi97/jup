@@ -80,11 +80,13 @@ try:
     band_to_plot = st.selectbox('Band to plot',list(np.unique(key_words)))
     scen_to_plot = st.selectbox('Scenario',list(np.unique(scenarios)))
 
+    time_ext = st.checkbox('Years', np.arange(2020,2105,5))
+
     fig,ax = plt.subplots(1,1, figsize=(9,5), dpi=100)
 
     variables_to_plot = []
 
-    time_ext = list(st.checkbox('Years', np.arange(2020,2105,5)))
+    
 
 
     # Finding all the metrics associated with that variable (low, man, up)
