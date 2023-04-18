@@ -137,10 +137,14 @@ try:
         plt.text(0, band['Min Value'], band['Tier'], fontsize=9)
 
 
-
+    title = st.text_input('Chart title')
     ax.set_xlabel('Km')
     ax.set_ylabel('value')
-    ax.set_title(var_to_plot)
+
+    try:
+        ax.set_title(title)
+    except:
+        ax.set_title(var_to_plot)
 
     handles, labels = plt.gca().get_legend_handles_labels()
     by_label = dict(zip(labels, handles))
