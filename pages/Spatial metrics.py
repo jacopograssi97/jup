@@ -80,7 +80,7 @@ try:
     band_to_plot = st.selectbox('Band to plot',list(np.unique(key_words)))
     scen_to_plot = st.selectbox('Scenario',list(np.unique(scenarios)))
 
-    fig,ax = plt.subplots(1,1, figsize=(7,4), dpi=100)
+    fig,ax = plt.subplots(1,1, figsize=(9,5), dpi=100)
 
     variables_to_plot = []
 
