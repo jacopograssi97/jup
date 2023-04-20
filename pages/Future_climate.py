@@ -125,5 +125,4 @@ try:
 
     
 except:
-    raise
     st.write('Load the file')
