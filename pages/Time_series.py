@@ -41,8 +41,10 @@ file_thresholds = pd.read_excel('Table Formatted RANGES.xlsx')
 try:
     st.subheader('Time series visualization')
 
+    # Taking all the columns from the file
     all_columns = file.columns.to_list()
 
+    # Some columns 
     reserved = ['Unnamed: 0', 'resultId', 'locationId', 'latitude', 'longitude', 'ouputMeshGrid', 'outputMeshGrid', 'parentLocationId', 'scenario', 'year', 'r_value']
     variables = list(set(all_columns) - set(reserved))
     var_ID_all = [var[0:2] for var in variables]
@@ -60,6 +62,8 @@ try:
         for kw in key_words:
             if kw in var:
                 variables_cleaned_one.append(var.replace(kw, ""))
+            else:
+                variables_cleaned_one.append(var)
 
     variables_cleaned_one = list(np.unique(variables_cleaned_one))        
 
@@ -69,7 +73,6 @@ try:
         for kw in key_words:
             if kw in var:
                 variables_cleaned.append(var.replace(kw, ""))
-
 
     var_to_plot = st.selectbox('Variable to plot',list(np.unique(variables_cleaned)))
 
@@ -176,4 +179,5 @@ try:
     st.table(tbl)
 
 except:
+    raise
     st.write('Load the file')
