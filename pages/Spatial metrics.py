@@ -39,7 +39,7 @@ file_thresholds = pd.read_excel('Table Formatted RANGES.xlsx')
 ###############################################################
 
 try:
-    st.subheader('Time series visualization')
+    st.subheader('Space-time evolution of metrics')
 
     all_columns = file.columns.to_list()
 
@@ -84,8 +84,6 @@ try:
     fig,ax = plt.subplots(1,1, figsize=(9,5), dpi=100)
 
     variables_to_plot = []
-
-    
 
 
     # Finding all the metrics associated with that variable (low, man, up)

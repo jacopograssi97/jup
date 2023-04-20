@@ -110,6 +110,7 @@ try:
             else:
                 ax.plot(by_scenario_mod.year, by_scenario_mod[var], c=color, label = scen_nm, lw=2)
     
+    ax.plot([], [], ':', c='w', label=" ")
     ax.plot([], [], ':', c='k', label="Lower")
     ax.plot([], [], '-', c='k', label="Mean")
     ax.plot([], [], '--', c='k', label="Upper")
@@ -135,17 +136,12 @@ try:
     if '**' in var_to_band:
         var_to_band = var_to_band.replace("**", "*")
     
-    st.write(var_to_band)
-
-    print(var_to_band)
-
     bands = file_thresholds.where(file_thresholds.Metric == var_to_band).dropna()
     print(bands)
     for index, band in bands.iterrows():
 
         ax.axhline(y = band['Min Value'], color = 'k', linestyle = '--', alpha=0.6)
         plt.text(time_ext[0] + 5, band['Min Value'], band['Tier'], fontsize=9)
-
 
     title = st.text_input('Chart title', var_to_plot)
     ylabel = st.text_input('Y label', 'value')
@@ -180,5 +176,4 @@ try:
     st.table(tbl)
 
 except:
-    raise
     st.write('Load the file')
