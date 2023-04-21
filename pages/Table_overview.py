@@ -65,6 +65,8 @@ try:
         for kw in key_words:
             if kw in var:
                 variables_cleaned_one.append(var.replace(kw, ""))
+            else:
+                variables_cleaned_one.append(var)
 
     variables_cleaned_one = list(np.unique(variables_cleaned_one))        
 
@@ -74,6 +76,8 @@ try:
         for kw in key_words:
             if kw in var:
                 variables_cleaned.append(var.replace(kw, ""))
+            else:
+                variables_cleaned.append(var)
 
     for scen in ['ssp126','ssp245','ssp585']:
 
@@ -84,12 +88,14 @@ try:
 
         for var in list(np.unique(variables_cleaned)):
 
-            
-            fil = file.where(file['scenario']==scen)
-            risk = fil[var + '_mean_HAZARD'].dropna().to_list()
-            risks.append(np.unique(risk))
-            nrisks.append(len(np.unique(risk)))
-            vari.append(var)
+            try:
+                fil = file.where(file['scenario']==scen)
+                risk = fil[var + '_mean_HAZARD'].dropna().to_list()
+                risks.append(np.unique(risk))
+                nrisks.append(len(np.unique(risk)))
+                vari.append(var)
+            except:
+                pass
 
 
         table = pd.DataFrame()
@@ -102,4 +108,5 @@ try:
         st.table(table)
     
 except:
+    raise
     st.write('Load the file')
