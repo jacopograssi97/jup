@@ -18,13 +18,11 @@ matplotlib.rc('font', **font)
 
 st.header('Dashboard for Jupiter Intelligence data analysis - v 1.0')
 
-st.divider()
-st.divider()
 
 
+st.markdown('Author: jacopo.grassi@wsp.com')
+st.divider()
 
-st.divider()
-st.divider()
 
 
 
