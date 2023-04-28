@@ -164,21 +164,6 @@ try:
     
 
 
-    tbl = pd.DataFrame()
-    for var in variables_to_plot:
-
-        if 'mean' in var:
-
-            for scen, color,scen_nm in zip(scenarios,colors,['SSP1-2.6','SSP2-4.5','SSP5-8.5']):
-                by_scenario = file.groupby('scenario').get_group(scen)
-                by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
-                by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0]).dropna()
-                tbl[f'{scen} {var}'] = by_scenario_mod[var].to_numpy()
-            
-                tbl['year'] = by_scenario_mod.year.to_numpy().astype(int)
-
-    tbl = tbl.set_index('year')
-
 
     with col2:
         tab1, tab2, tab3= st.tabs(["Final plot", "Interactive plot", "Tabular data"])
