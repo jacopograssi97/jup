@@ -113,7 +113,7 @@ try:
             if band_to_plot in var:
                 ax.plot(np.linspace(5,100,20), by_yr[var].to_list(), '-', label=int(yr), color=colors[i])
                 fig_iter.add_trace(go.Scatter(x=np.linspace(5,100,20), y=by_yr[var].to_list(),
-                    mode='lines', line=dict( width=4, dash='dash'),
+                    mode='lines', line=dict( width=4),
                     name=str(yr)))
             
     forbidden_numb = np.arange(0,1000,1)
