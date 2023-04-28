@@ -16,14 +16,19 @@ font = {'family' : 'Arial',
 matplotlib.rc('font', **font)
 
 
-st.header('Dashboard for Jupiter Intelligence data analysis - v 1.0')
+st.header('Dashboard for Jupiter Intelligence data analysis - v 1.1')
 
 
 
 st.markdown('Author: jacopo.grassi@wsp.com')
 st.divider()
 
+st.subheader('Updates - v 1.1')
+with st.expander('Show updates'):
+        st.text('-Bug fixed \n')
+        st.text('-Added Interactive plot in Spatial metrics and Time series sections')
 
+st.divider()
 
 
 st.subheader('Updates - v 1.0')
