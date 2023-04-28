@@ -175,4 +175,4 @@ try:
             st.write('Work in progress')
 
 except:
-    raise
+    st.write('Load file')
