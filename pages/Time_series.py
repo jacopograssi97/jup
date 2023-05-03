@@ -199,12 +199,8 @@ by_label = dict(zip(labels, handles))
 plt.legend(by_label.values(), by_label.keys(), loc='center left', bbox_to_anchor=(1.1, 0.5), frameon=False)
 
 
-
-
 tbl = pd.DataFrame()
 for var in variables_to_plot:
-
-    #if 'mean' in var:
 
     for scen, color,scen_nm in zip(scenarios,colors,['SSP1-2.6','SSP2-4.5','SSP5-8.5']):
         by_scenario = file.groupby('scenario').get_group(scen)
@@ -216,7 +212,7 @@ for var in variables_to_plot:
 
 tbl = tbl.set_index('year')
 
-#
+
 
 
 with col2:
@@ -228,6 +224,13 @@ with col2:
         st.plotly_chart(fig_iter, theme="streamlit")
     
     with tab3:
-        st.table(tbl)
+        bd = st.selectbox('Band',['mean','lower','upper'])
+        cl = tbl.columns.to_list()
+
+        col_to_tbl = []
+        for c in cl:
+            if bd in c:
+                col_to_tbl.append(c)
+        st.table(tbl[col_to_tbl])
 
 
