@@ -102,7 +102,7 @@ variables_to_plot = []
 with col1:
 
     var_to_plot = st.selectbox('Variable to plot',list(np.unique(variables_cleaned)))
-    time_ext = list(st.slider('Time domain', 2020, 2100, (2021, 2099)))
+    time_ext = list(st.slider('Time domain', 2019, 2101, (2019, 2101)))
 
 
 # Finding all the metrics associated with that variable (low, man, up)
@@ -116,8 +116,8 @@ for var in variables_to_plot:
 
     for scen, color,scen_nm in zip(scenarios,colors,['SSP1-2.6','SSP2-4.5','SSP5-8.5']):
         by_scenario = file.groupby('scenario').get_group(scen)
-        by_scenario_mod = by_scenario.where(by_scenario['year'] < time_ext[1] ).dropna()
-        by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] > time_ext[0] ).dropna()
+        by_scenario_mod = by_scenario.where(by_scenario['year'] <= time_ext[1] ).dropna()
+        by_scenario_mod = by_scenario_mod.where(by_scenario_mod['year'] >= time_ext[0] ).dropna()
 
         if 'upper' in var:
             ax.plot(by_scenario_mod.year, by_scenario_mod[var], '--', c=color)
