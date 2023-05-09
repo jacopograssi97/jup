@@ -4,6 +4,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
+import time
 
 
 # using the style for the plot
@@ -15,37 +16,43 @@ font = {'family' : 'Arial',
 
 matplotlib.rc('font', **font)
 
+st.set_page_config(page_title="Home - Dashboard", page_icon="📈", layout="wide")
 
-st.header('Dashboard for Jupiter Intelligence data analysis - v 1.1')
-
-
-
-st.markdown('Author: jacopo.grassi@wsp.com')
-st.divider()
-
-st.subheader('Updates - v 1.1')
-with st.expander('Show updates'):
-        st.text('-Bug fixed \n')
-        st.text('-Added Interactive plot in Spatial metrics and Time series sections')
-
-st.divider()
+st.info('Some anomalous arrests have been reported due to technical problems. Pease contact the author if anything strange happens.', icon='⚠️')
 
 
-st.subheader('Updates - v 1.0')
-st.subheader('Major release')
-with st.expander('Show updates'):
-        st.text('-Bug fixed \n-Section Future Climate added')
-        st.text('-Please note that this section will need the file _CLIMATE.xlsx')
+col1, div, col2 = st.columns([7,1,4])
 
-st.divider()
+with col1:
+        st.header('Dashboard for Jupiter Intelligence data analysis - v 1.1')
+        st.markdown('Author: jacopo.grassi@wsp.com')
 
 
-st.subheader('Updates - v 0.2')
-with st.expander('Show updates'):
-        st.text('-Bug fixed \n-Section Spatial metrics added')
+with col2:
 
-st.divider()
+        st.subheader('Updates - v 1.1')
+        with st.expander('Show updates'):
+                st.text('-Bug fixed \n')
+                st.text('-Added Interactive plot in Spatial metrics and Time series sections')
 
-st.subheader('Updates - v 0.1')
-with st.expander('Show updates'):
-        st.text('-Bug fixed \n-Dashed and dotted lines added for lower and upper limits in Time series \n-Tables simplified in Time series')
+        st.divider()
+
+
+        st.subheader('Updates - v 1.0')
+        st.subheader('Major release')
+        with st.expander('Show updates'):
+                st.text('-Bug fixed \n-Section Future Climate added')
+                st.text('-Please note that this section will need the file _CLIMATE.xlsx')
+
+        st.divider()
+
+
+        st.subheader('Updates - v 0.2')
+        with st.expander('Show updates'):
+                st.text('-Bug fixed \n-Section Spatial metrics added')
+
+        st.divider()
+
+        st.subheader('Updates - v 0.1')
+        with st.expander('Show updates'):
+                st.text('-Bug fixed \n-Dashed and dotted lines added for lower and upper limits in Time series \n-Tables simplified in Time series')
