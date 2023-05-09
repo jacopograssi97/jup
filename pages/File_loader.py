@@ -17,6 +17,9 @@ matplotlib.rc('font', **font)
 
 st.set_page_config(page_title="File Explorer", page_icon="📈")
 
+st.info('Some anomalous arrests have been reported due to technical problems. Pease contact the author if anything strange happens.', icon='⚠️')
+
+
 def save_img(fig):
     fig.savefig('prova.png', dpi=600, bbox_inches='tight')
 

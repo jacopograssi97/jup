@@ -19,6 +19,8 @@ matplotlib.rc('font', **font)
 
 st.set_page_config(page_title="Time series", page_icon="📈", layout="wide")
 
+st.info('Some anomalous arrests have been reported due to technical problems. Pease contact the author if anything strange happens.', icon='⚠️')
+
 ###############################################################
 #######################   DATA LOADER #########################
 ###############################################################
