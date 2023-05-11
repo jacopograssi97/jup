@@ -262,9 +262,9 @@ with tab2:
         anomaly_table.append(tb.mean() - baseline)
         percentage.append((100/baseline) * (tb.mean() - baseline))
 
-    final_table = pd.concat(final_table, axis=1, ignore_index=True).set_axis(periods, axis=1, inplace=False)
-    anomaly_table = pd.concat(anomaly_table, axis=1, ignore_index=True).set_axis(periods, axis=1, inplace=False)
-    percentage = pd.concat(percentage, axis=1, ignore_index=True).set_axis(periods, axis=1, inplace=False)
+    final_table = pd.concat(final_table, axis=1, ignore_index=True).set_axis(periods, axis=1)
+    anomaly_table = pd.concat(anomaly_table, axis=1, ignore_index=True).set_axis(periods, axis=1)
+    percentage = pd.concat(percentage, axis=1, ignore_index=True).set_axis(periods, axis=1)
     
     col1, col2, col3 = st.columns(3)
     
