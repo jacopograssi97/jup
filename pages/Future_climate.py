@@ -49,16 +49,16 @@ file_thresholds = pd.read_excel('Table Formatted RANGES.xlsx')
 st.subheader('Climatology on monthly mean values')
 st.markdown('Please note that in this section you have to load a _CLIMATE file.')
 
-if uploaded_file_data == None:
-    st.warning(f'Please upload a file', icon="🚨")
-    st.stop()
+# if uploaded_file_data == None:
+#     st.warning(f'Please upload a file', icon="🚨")
+#     st.stop()
 
-if '_CLIMATE' not in uploaded_file_data.name:
-    st.error(f'The file you uploaded is: {uploaded_file_data.name}. Please note that this section needs a _CLIMATE file.', icon="🚨")
-    st.stop()
+# if '_CLIMATE' not in uploaded_file_data.name:
+#     st.error(f'The file you uploaded is: {uploaded_file_data.name}. Please note that this section needs a _CLIMATE file.', icon="🚨")
+#     st.stop()
 
-if '_CLIMATE' in uploaded_file_data.name:
-    st.success(f'The file you uploaded is: {uploaded_file_data.name}.')
+# if '_CLIMATE' in uploaded_file_data.name:
+#     st.success(f'The file you uploaded is: {uploaded_file_data.name}.')
 
 tab1, tab2, tab3 = st.tabs(["Seasonal Cycles", "Time trends", "About"])
 
@@ -67,7 +67,7 @@ with tab1:
     col1, col2= st.columns(2)
 
     fig,ax = plt.subplots(1,1, figsize=(7,4), dpi=100)
-    columns = file.columns.to_list()
+    
 
     
 
@@ -80,6 +80,7 @@ with tab1:
         bands = st.multiselect('Select band', ['lower', 'mean', 'upper'])
 
     file=pd.read_excel(uploaded_file_data, sheet_name='Cycles')
+    columns = file.columns.to_list()
 
     if variable == 'Precipitation':
 

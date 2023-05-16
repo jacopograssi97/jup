@@ -28,11 +28,11 @@ st.info('Some anomalous arrests have been reported due to technical problems. Pe
 uploaded_file_data = st.file_uploader('DATA FILE ')
 
 try:
-    file=pd.read_excel(uploaded_file_data)
+    file=pd.read_excel(uploaded_file_data, sheet_name='Processed')
 
 except:
     try:
-            file=pd.read_excel(uploaded_file_data)
+            file=pd.read_excel(uploaded_file_data, sheet_name='Processed')
     except:      
             pass
 
@@ -46,16 +46,16 @@ file_thresholds = pd.read_excel('Table Formatted RANGES.xlsx')
 st.subheader('Time series visualization')
 st.markdown('In this section it is possible to analyze the time evolution of a selected metric. Please note that in this section you have to load a _PROCESSED file.')
 
-if uploaded_file_data == None:
-    st.warning(f'Please upload a file', icon="🚨")
-    st.stop()
+# if uploaded_file_data == None:
+#     st.warning(f'Please upload a file', icon="🚨")
+#     st.stop()
 
-if '_PROCESSED' not in uploaded_file_data.name:
-    st.error(f'The file you uploaded is: {uploaded_file_data.name}. Please note that this section needs a _PROCESSED file.', icon="🚨")
-    st.stop()
+# if '_PROCESSED' not in uploaded_file_data.name:
+#     st.error(f'The file you uploaded is: {uploaded_file_data.name}. Please note that this section needs a _PROCESSED file.', icon="🚨")
+#     st.stop()
 
-if '_PROCESSED' in uploaded_file_data.name:
-    st.success(f'The file you uploaded is: {uploaded_file_data.name}.')
+# if '_PROCESSED' in uploaded_file_data.name:
+#     st.success(f'The file you uploaded is: {uploaded_file_data.name}.')
 
 # Taking all the columns from the file
 all_columns = file.columns.to_list()

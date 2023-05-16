@@ -15,7 +15,7 @@ font = {'family' : 'Arial',
 matplotlib.rc('font', **font)
 
 
-st.set_page_config(page_title="File Explorer", page_icon="📈")
+st.set_page_config(page_title="File Explorer", page_icon="📈", layout="wide")
 
 st.info('Some anomalous arrests have been reported due to technical problems. Pease contact the author if anything strange happens.', icon='⚠️')
 
@@ -30,11 +30,11 @@ def save_img(fig):
 uploaded_file_data = st.file_uploader('DATA FILE ')
 
 try:
-    file=pd.read_excel(uploaded_file_data)
+    file=pd.read_excel(uploaded_file_data, sheet_name='Processed')
 
 except:
     try:
-            file=pd.read_excel(uploaded_file_data)
+            file=pd.read_excel(uploaded_file_data, sheet_name='Processed')
     except:      
             pass
 
